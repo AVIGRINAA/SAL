@@ -1,0 +1,46 @@
+Sal Mekomi 3.0 — Validation 2026-10-19
+
+Chromium browser, file:// offline HTML. No page JavaScript errors.
+Mobile viewport 390px: no document overflow in tested starter-data screen.
+
+Parsed actual retailer promotion files:
+- Netiv / Bar Kol: 557 rows from the user's exact 19-Oct sample.
+- Rami Levy: 170 rows, downloaded live from public HTTP portal.
+- Osher Ad: 833 rows, downloaded live from public HTTP portal.
+- Carrefour: 1391 rows, downloaded live from public portal.
+- Shefa: 733 rows from 18-Oct starter snapshot.
+- Shuk HaIr: 901 rows from 18-Oct starter snapshot.
+- Shufersal / Yes Hesed HaShomer branch611: 981 rows downloaded live 19-Oct.
+  Also tested public repository fixture (complex gift, retained for review).
+See COMPATIBILITY.json for formula-recognition counts and withheld reasons.
+Recognition is not a promise of active dates, membership or purchase eligibility.
+
+Passed browser checks:
+- Exact Ajax offer 8.90 with synthetic shelf baseline 12.90 (test only):
+  quantity 2 -> before 25.80, after 17.80, savings 8.00.
+- Leading-zero barcode matching, product search promotion text, basket row prices.
+- Expired promotion exclusion; club eligibility off/on.
+- Real starter ZIP/GZ import: three full price lists and 1634 promotions.
+- Mixed-SKU quantity bundle; allocation favors higher savings.
+- Per-line savings and final prices reconcile to overall totals in cents.
+- Redemption cap; overlapping offers without double use of a unit.
+- Promotion toggle; missing-product partial status.
+- UTF-16 decode; filename subchain and timestamp variants; free-list quantity.
+- IndexedDB data retained after reload.
+
+Downloader:
+- Python compilation and filename picker tests passed.
+- Updated server adapter discovered AND downloaded live Rami Levy branch39,
+  Osher Ad branch34 and Carrefour branch981 PromoFull files.
+- Shufersal live listing and promotion file download passed after requesting a
+  fresh listing (cached listings can contain expired download links).
+- Netiv portal returned HTTP403
+  during research. Manual importing remains available and exact Netiv sample passed.
+- Shefa and Shuk downloads were live-validated in v2; v3 retested their saved files.
+
+Limits:
+- Weighted, gifts, multi-group, coupons and minimum-spend conditions stay visible
+  for review where no verified automatic formula exists.
+- Large overlapping baskets may use a visible approximate allocation warning.
+- No store-stock or checkout-price guarantee. Internet download depends on source
+  availability. Offline estimates use imported snapshots, not current live prices.
